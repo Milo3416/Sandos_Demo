@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resort Collection | Inspired Landing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(4,15,28,0.92) 0%, rgba(4,15,28,0.76) 45%, rgba(4,15,28,0.18) 100%);
+    }
+    .promo-overlay {
+      background: linear-gradient(180deg, rgba(5,16,30,0.04) 0%, rgba(5,16,30,0.60) 100%);
+    }
+    .glass {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .hotel-card:hover img { transform: scale(1.04); }
+  </style>
+  <script type="text/javascript" charset="utf-8">
+    (function (g, e, n, es, ys) {
+      g['_genesysJs'] = e;
+      g[e] = g[e] || function () {
+        (g[e].q = g[e].q || []).push(arguments)
+      };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+    })(window, 'Genesys', 'https://apps.mypurecloud.com/genesys-bootstrap/genesys.min.js', {
+      environment: 'prod',
+      deploymentId: '6d8807f0-7eec-4a23-bac4-9d1bb29adc78'
+    });
+  </script>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 text-white backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-4">
+        <button id="menuBtn" class="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] md:hidden">
+          Menú
+        </button>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.35em] text-cyan-300">Hotels & Resorts</div>
+          <div class="text-xl font-semibold">Resort Collection</div>
+        </div>
+      </div>
+
+      <nav class="hidden items-center gap-8 text-sm md:flex">
+        <a href="#resorts" class="transition hover:text-cyan-300">Resorts</a>
+        <a href="#deals" class="transition hover:text-cyan-300">Deals</a>
+        <a href="#unique" class="transition hover:text-cyan-300">Experiencias</a>
+        <a href="#loyalty" class="transition hover:text-cyan-300">Membresía</a>
+        <a href="#contact" class="transition hover:text-cyan-300">Contacto</a>
+      </nav>
+
+      <div class="hidden items-center gap-3 md:flex">
+        <button class="rounded-full border border-white/20 px-4 py-2 text-sm font-medium">My Booking</button>
+        <button class="rounded-full bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20">Book now</button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-slate-950 px-6 py-5 md:hidden">
+      <div class="flex flex-col gap-4 text-sm">
+        <a href="#resorts">Resorts</a>
+        <a href="#deals">Deals</a>
+        <a href="#unique">Experiencias</a>
+        <a href="#loyalty">Membresía</a>
+        <a href="#contact">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative min-h-[88vh] overflow-hidden bg-slate-950">
+    <img
+      src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1800&q=80"
+      alt="Resort frente al mar"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div class="hero-overlay absolute inset-0"></div>
+
+    <div class="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr]">
+      <div class="max-w-3xl text-white">
+        <div class="mb-4 inline-flex rounded-full border border-cyan-300/30 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-200">
+          Book now through March 31st
+        </div>
+        <h1 class="text-5xl font-semibold leading-tight md:text-7xl">Your best vacation starts here</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
+          Descubre una experiencia todo incluido inspirada en los grandes sitios hoteleros: promociones potentes, resorts visuales, beneficios claros y un journey directo a la reservación.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#deals" class="rounded-full bg-white px-6 py-3 font-semibold text-slate-950 shadow-xl transition hover:scale-[1.02]">Ver promociones</a>
+          <a href="#resorts" class="rounded-full border border-white/30 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20">Explorar resorts</a>
+        </div>
+      </div>
+
+      <div class="glass rounded-[2rem] border border-white/15 bg-white/10 p-6 text-white shadow-2xl">
+        <div class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">Book with us</div>
+        <div class="grid gap-4">
+          <div>
+            <label class="mb-2 block text-sm text-white/80">Destino</label>
+            <select class="w-full rounded-2xl border border-white/15 bg-slate-950/45 px-4 py-3 outline-none">
+              <option>Cancún</option>
+              <option>Playa del Carmen</option>
+              <option>Los Cabos</option>
+              <option>Ibiza</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="mb-2 block text-sm text-white/80">Check-in</label>
+              <input type="date" class="w-full rounded-2xl border border-white/15 bg-slate-950/45 px-4 py-3" />
+            </div>
+            <div>
+              <label class="mb-2 block text-sm text-white/80">Check-out</label>
+              <input type="date" class="w-full rounded-2xl border border-white/15 bg-slate-950/45 px-4 py-3" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="mb-2 block text-sm text-white/80">Adultos</label>
+              <select class="w-full rounded-2xl border border-white/15 bg-slate-950/45 px-4 py-3">
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-2 block text-sm text-white/80">Niños</label>
+              <select class="w-full rounded-2xl border border-white/15 bg-slate-950/45 px-4 py-3">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+          <button class="mt-2 rounded-2xl bg-cyan-400 px-5 py-4 font-semibold text-slate-950 transition hover:brightness-95">Buscar disponibilidad</button>
+          <div class="pt-2 text-center text-xs text-white/70">100% secure purchase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-slate-200 bg-white">
+    <div class="mx-auto grid max-w-7xl gap-4 px-6 py-10 md:grid-cols-4">
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-5 py-6 text-center shadow-sm">
+        <div class="text-xs uppercase tracking-[0.16em] text-slate-500">Benefit</div>
+        <div class="mt-2 text-lg font-semibold">Best Price Guarantee</div>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-5 py-6 text-center shadow-sm">
+        <div class="text-xs uppercase tracking-[0.16em] text-slate-500">Benefit</div>
+        <div class="mt-2 text-lg font-semibold">Flexible Cancellation</div>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-5 py-6 text-center shadow-sm">
+        <div class="text-xs uppercase tracking-[0.16em] text-slate-500">Benefit</div>
+        <div class="mt-2 text-lg font-semibold">Personalized Attention</div>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-5 py-6 text-center shadow-sm">
+        <div class="text-xs uppercase tracking-[0.16em] text-slate-500">Benefit</div>
+        <div class="mt-2 text-lg font-semibold">Book Directly</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deals" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="mb-10 max-w-2xl">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">Find the best deals for you</div>
+      <h2 class="mt-4 text-4xl font-semibold text-slate-950">Promociones destacadas con enfoque visual y comercial</h2>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-3">
+      <article class="relative overflow-hidden rounded-[2rem] shadow-xl lg:col-span-2">
+        <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1400&q=80" alt="Promoción resort" class="h-[520px] w-full object-cover" />
+        <div class="promo-overlay absolute inset-0"></div>
+        <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+          <div class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200">Featured campaign</div>
+          <h3 class="mt-3 text-3xl font-semibold leading-tight">Up to 45% off + extra member perks + resort credit</h3>
+          <p class="mt-4 max-w-3xl text-base leading-7 text-slate-200">
+            Un bloque hero secundario pensado para empujar reservación directa, con una promoción dominante, términos resumidos y CTA muy claro.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-4">
+            <a href="#" class="rounded-full bg-white px-6 py-3 font-semibold text-slate-950">Book now</a>
+            <a href="#" class="rounded-full border border-white/30 px-6 py-3 font-semibold text-white">Review terms</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="grid gap-8">
+        <article class="overflow-hidden rounded-[2rem] bg-white shadow-lg">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80" alt="Experiencia suite" class="h-56 w-full object-cover" />
+          <div class="p-6">
+            <div class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">Special package</div>
+            <h3 class="mt-2 text-2xl font-semibold">Suite Paradise Experience</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">Traslado, cena especial, amenidades, experiencia wellness y salida extendida.</p>
+            <a href="#" class="mt-5 inline-block rounded-full border border-slate-300 px-5 py-2.5 font-semibold text-slate-900">Book now</a>
+          </div>
+        </article>
+
+        <article class="overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-lg">
+          <div class="p-6">
+            <div class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Book directly</div>
+            <h3 class="mt-2 text-2xl font-semibold">Four destinations, one extraordinary experience</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">Bloque editorial para reforzar narrativa de marca, destinos y propuesta de valor por reservación directa.</p>
+            <a href="#resorts" class="mt-5 inline-block rounded-full bg-cyan-400 px-5 py-2.5 font-semibold text-slate-950">Explore resorts</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="max-w-3xl text-center mx-auto">
+        <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">Your best vacation</div>
+        <h2 class="mt-4 text-4xl font-semibold text-slate-950">Starts here</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-600">
+          Un bloque editorial central como el del sitio de referencia: headline potente, mensaje emocional y foco en destinos memorables.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resorts" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="max-w-2xl">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">Our hotels</div>
+      <h2 class="mt-4 text-4xl font-semibold text-slate-950">Discover the best vacation destinations for you</h2>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+      <article class="hotel-card overflow-hidden rounded-[2rem] bg-white shadow-lg shadow-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80" alt="Nature Resort" class="h-72 w-full object-cover transition duration-500" /></div>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-slate-950">Nature Resort</h3>
+          <div class="mt-1 text-sm uppercase tracking-[0.18em] text-cyan-700">Playa del Carmen</div>
+          <p class="mt-4 text-base leading-7 text-slate-600">Naturaleza, cenote, parque acuático y una experiencia all inclusive con fuerte componente familiar.</p>
+          <a href="#" class="mt-6 inline-block rounded-full border border-slate-300 px-5 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white">View resort</a>
+        </div>
+      </article>
+
+      <article class="hotel-card overflow-hidden rounded-[2rem] bg-white shadow-lg shadow-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Luxury Resort" class="h-72 w-full object-cover transition duration-500" /></div>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-slate-950">Luxury Resort</h3>
+          <div class="mt-1 text-sm uppercase tracking-[0.18em] text-cyan-700">Cancún</div>
+          <p class="mt-4 text-base leading-7 text-slate-600">Spa, piscinas infinitas, bares chic y una propuesta premium frente al mar con tono sofisticado.</p>
+          <a href="#" class="mt-6 inline-block rounded-full border border-slate-300 px-5 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white">View resort</a>
+        </div>
+      </article>
+
+      <article class="hotel-card overflow-hidden rounded-[2rem] bg-white shadow-lg shadow-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Beach Resort" class="h-72 w-full object-cover transition duration-500" /></div>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-slate-950">Beach Resort</h3>
+          <div class="mt-1 text-sm uppercase tracking-[0.18em] text-cyan-700">Riviera Maya</div>
+          <p class="mt-4 text-base leading-7 text-slate-600">Acceso directo a playa, áreas familiares y una propuesta relajada inspirada en resorts vacacionales clásicos.</p>
+          <a href="#" class="mt-6 inline-block rounded-full border border-slate-300 px-5 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white">View resort</a>
+        </div>
+      </article>
+
+      <article class="hotel-card overflow-hidden rounded-[2rem] bg-white shadow-lg shadow-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Cliff Resort" class="h-72 w-full object-cover transition duration-500" /></div>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-slate-950">Cliff Resort</h3>
+          <div class="mt-1 text-sm uppercase tracking-[0.18em] text-cyan-700">Los Cabos</div>
+          <p class="mt-4 text-base leading-7 text-slate-600">Suites con vista al océano, identidad fuerte de destino y una narrativa de escapada memorable.</p>
+          <a href="#" class="mt-6 inline-block rounded-full border border-slate-300 px-5 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white">View resort</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="unique" class="bg-slate-950 py-20 text-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="text-center">
+        <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">What makes us unique?</div>
+        <h2 class="mt-4 text-4xl font-semibold">Discover the difference</h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Unique destinations</div>
+          <h3 class="mt-3 text-2xl font-semibold">Paradise is waiting</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Tarjetas informativas estilo carrusel editorial para destacar destinos, valor de marca y posicionamiento.</p>
+        </div>
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Family forever</div>
+          <h3 class="mt-3 text-2xl font-semibold">Adventures with your loved ones</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Sección para actividades familiares, gastronomía y atributos que empujan permanencia y preferencia.</p>
+        </div>
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Adults only</div>
+          <h3 class="mt-3 text-2xl font-semibold">Exclusive getaways</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Bloque para audiencias premium, parejas y escapes con una narrativa más sofisticada y aspiracional.</p>
+        </div>
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Weddings</div>
+          <h3 class="mt-3 text-2xl font-semibold">Wedding packages</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Espacio para bodas y eventos especiales con CTA dedicado y storytelling centrado en momentos memorables.</p>
+        </div>
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Groups & events</div>
+          <h3 class="mt-3 text-2xl font-semibold">Exciting perks</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Formato apto para reuniones, convenciones y grupos con una propuesta más comercial y B2B-friendly.</p>
+        </div>
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Deals</div>
+          <h3 class="mt-3 text-2xl font-semibold">Stay informed</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Tarjeta pensada para alimentar campañas, urgencia promocional y adquisición de leads o reservas directas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-20">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="overflow-hidden rounded-[2rem]">
+        <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1400&q=80" alt="Caring for nature" class="h-full w-full object-cover" />
+      </div>
+      <div class="flex flex-col justify-center">
+        <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">Caring for nature</div>
+        <h2 class="mt-4 text-4xl font-semibold text-slate-950">Responsabilidad y turismo consciente</h2>
+        <p class="mt-5 text-lg leading-8 text-slate-600">
+          Sección inspirada en el bloque de sustentabilidad del sitio de referencia, ideal para comunicar iniciativas ESG, turismo responsable y reputación de marca.
+        </p>
+        <a href="#" class="mt-8 inline-block w-fit rounded-full bg-slate-950 px-6 py-3 font-semibold text-white">Conocer el programa</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="loyalty" class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid gap-8 rounded-[2rem] bg-white p-10 shadow-lg lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">Rewards program</div>
+          <h2 class="mt-4 text-4xl font-semibold text-slate-950">Benefits of being a member</h2>
+        </div>
+        <div>
+          <p class="text-lg leading-8 text-slate-600">
+            Un bloque de loyalty muy alineado al patrón observado: acceso, perks, ventajas escalonadas y CTAs claros para iniciar sesión o registrarse.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-4">
+            <a href="#" class="rounded-full bg-slate-950 px-6 py-3 font-semibold text-white">Log in</a>
+            <a href="#" class="rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-900">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-20">
+    <div class="text-center">
+      <div class="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">Trusted partners</div>
+      <h2 class="mt-4 text-4xl font-semibold text-slate-950">Partners & affiliations</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-lg leading-8 text-slate-600">
+        Área de logos y credenciales para cerrar la página con prueba social y respaldo institucional.
+      </p>
+    </div>
+    <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-8 text-center font-semibold text-slate-500">Partner 01</div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-8 text-center font-semibold text-slate-500">Partner 02</div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-8 text-center font-semibold text-slate-500">Partner 03</div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-8 text-center font-semibold text-slate-500">Partner 04</div>
+    </div>
+  </section>
+
+  <footer id="contact" class="border-t border-slate-200 bg-white">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4">
+      <div>
+        <div class="text-xs uppercase tracking-[0.35em] text-cyan-700">Resort Collection</div>
+        <div class="mt-3 text-xl font-semibold text-slate-950">Original HTML Concept</div>
+      </div>
+      <div>
+        <div class="font-semibold text-slate-950">Explore</div>
+        <div class="mt-4 space-y-3 text-slate-600">
+          <div>Hotels</div>
+          <div>Deals</div>
+          <div>Experiences</div>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold text-slate-950">Support</div>
+        <div class="mt-4 space-y-3 text-slate-600">
+          <div>Contact us</div>
+          <div>Reservations</div>
+          <div>Terms & conditions</div>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold text-slate-950">Newsletter</div>
+        <div class="mt-4 text-slate-600">Recibe novedades, campañas y beneficios exclusivos.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>
