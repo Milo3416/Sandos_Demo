@@ -19,67 +19,27 @@
     }
     .hotel-card:hover img { transform: scale(1.04); }
   </style>
+
   <script type="text/javascript" charset="utf-8">
     (function (g, e, n, es, ys) {
       g['_genesysJs'] = e;
       g[e] = g[e] || function () {
-        (g[e].q = g[e].q || []).push(arguments)
+        (g[e].q = g[e].q || []).push(arguments);
       };
       g[e].t = 1 * new Date();
       g[e].c = es;
-      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+      ys = document.createElement('script');
+      ys.async = 1;
+      ys.src = n;
+      ys.charset = 'utf-8';
+      document.head.appendChild(ys);
     })(window, 'Genesys', 'https://apps.mypurecloud.com/genesys-bootstrap/genesys.min.js', {
       environment: 'prod',
       deploymentId: '6d8807f0-7eec-4a23-bac4-9d1bb29adc78'
     });
   </script>
-  <script>
-    let availabilityClicked = false;
-    let bookingContinued = false;
-    let abandonmentTimer = null;
-  
-    Genesys("subscribe", "Journey.ready", function () {
-      const availabilityBtn = document.getElementById("availabilityBtn");
-  
-      if (!availabilityBtn) {
-        console.warn("No se encontró #availabilityBtn");
-        return;
-      }
-  
-      availabilityBtn.addEventListener("click", function () {
-        availabilityClicked = true;
-        bookingContinued = false;
-  
-        Genesys("command", "Journey.record", {
-          eventName: "availability_clicked",
-          customAttributes: {
-            page: window.location.href,
-            section: "booking-widget",
-            hotel: "Sandos Demo"
-          }
-        });
-  
-        if (abandonmentTimer) {
-          clearTimeout(abandonmentTimer);
-        }
-  
-        abandonmentTimer = setTimeout(function () {
-          if (availabilityClicked && !bookingContinued) {
-            Genesys("command", "Journey.record", {
-              eventName: "availability_abandoned",
-              customAttributes: {
-                page: window.location.href,
-                waitSeconds: 15,
-                hotel: "Sandos Demo",
-                reason: "no_next_step"
-              }
-            });
-          }
-        }, 15000);
-      });
-    });  
-  </script>
 </head>
+
 <body class="bg-white text-slate-900 antialiased">
   <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 text-white backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -181,7 +141,9 @@
               </select>
             </div>
           </div>
-          <button id="availabilityBtn" class="mt-2 rounded-2xl bg-cyan-400 px-5 py-4 font-semibold text-slate-950 transition hover:brightness-95">Buscar disponibilidad</button>
+          <button id="availabilityBtn" class="mt-2 rounded-2xl bg-cyan-400 px-5 py-4 font-semibold text-slate-950 transition hover:brightness-95">
+            Buscar disponibilidad
+          </button>
           <div class="pt-2 text-center text-xs text-white/70">100% secure purchase</div>
         </div>
       </div>
@@ -442,11 +404,87 @@
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
       });
     }
+  </script>
+
+  <script>
+    let availabilityClicked = false;
+    let abandonmentTimer = null;
+    let exitIntentSent = false;
+    let journeyHandlerBound = false;
+
+    Genesys("subscribe", "Journey.ready", function () {
+      console.log("Journey plugin listo");
+
+      const availabilityBtn = document.getElementById("availabilityBtn");
+
+      if (!availabilityBtn) {
+        console.warn("No se encontró #availabilityBtn");
+        return;
+      }
+
+      if (journeyHandlerBound) {
+        return;
+      }
+      journeyHandlerBound = true;
+
+      availabilityBtn.addEventListener("click", function () {
+        availabilityClicked = true;
+        exitIntentSent = false;
+
+        Genesys("command", "Journey.record", {
+          eventName: "availability_clicked",
+          customAttributes: {
+            page: window.location.href,
+            section: "booking-widget",
+            hotel: "Sandos Demo"
+          }
+        });
+
+        console.log("Evento enviado: availability_clicked");
+
+        if (abandonmentTimer) {
+          clearTimeout(abandonmentTimer);
+        }
+
+        abandonmentTimer = setTimeout(function () {
+          if (availabilityClicked) {
+            Genesys("command", "Journey.record", {
+              eventName: "availability_abandoned",
+              customAttributes: {
+                page: window.location.href,
+                waitSeconds: "15",
+                hotel: "Sandos Demo",
+                reason: "no_next_step"
+              }
+            });
+
+            console.log("Evento enviado: availability_abandoned");
+          }
+        }, 15000);
+      });
+    });
+
+    document.addEventListener("mouseout", function (e) {
+      if (e.clientY <= 0 && availabilityClicked && !exitIntentSent) {
+        exitIntentSent = true;
+
+        Genesys("command", "Journey.record", {
+          eventName: "exit_intent_after_availability",
+          customAttributes: {
+            page: window.location.href,
+            hotel: "Sandos Demo"
+          }
+        });
+
+        console.log("Evento enviado: exit_intent_after_availability");
+      }
+    });
   </script>
 </body>
 </html>
