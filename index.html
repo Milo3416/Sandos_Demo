@@ -34,12 +34,50 @@
     });
   </script>
   <script>
-    (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
-    (a[o].q=a[o].q||[]).push(arguments)},a[o].l=1*new Date();u=t.createElement(c),
-    d=t.getElementsByTagName(c)[0];u.async=1;u.src=l;u.charset='utf-8';d.parentNode.insertBefore(u,d)
-    })(window, document, 'script', 'https://apps.mypurecloud.com/journey/sdk/js/web/v1/ac.js', 'ac');
-    ac('init', '', { region: 'use1' });
-    ac('load', 'autotrackUrlChange');
+    let availabilityClicked = false;
+    let bookingContinued = false;
+    let abandonmentTimer = null;
+  
+    Genesys("subscribe", "Journey.ready", function () {
+      const availabilityBtn = document.getElementById("availabilityBtn");
+  
+      if (!availabilityBtn) {
+        console.warn("No se encontró #availabilityBtn");
+        return;
+      }
+  
+      availabilityBtn.addEventListener("click", function () {
+        availabilityClicked = true;
+        bookingContinued = false;
+  
+        Genesys("command", "Journey.record", {
+          eventName: "availability_clicked",
+          customAttributes: {
+            page: window.location.href,
+            section: "booking-widget",
+            hotel: "Sandos Demo"
+          }
+        });
+  
+        if (abandonmentTimer) {
+          clearTimeout(abandonmentTimer);
+        }
+  
+        abandonmentTimer = setTimeout(function () {
+          if (availabilityClicked && !bookingContinued) {
+            Genesys("command", "Journey.record", {
+              eventName: "availability_abandoned",
+              customAttributes: {
+                page: window.location.href,
+                waitSeconds: 15,
+                hotel: "Sandos Demo",
+                reason: "no_next_step"
+              }
+            });
+          }
+        }, 15000);
+      });
+    });  
   </script>
 </head>
 <body class="bg-white text-slate-900 antialiased">
@@ -143,7 +181,7 @@
               </select>
             </div>
           </div>
-          <button class="mt-2 rounded-2xl bg-cyan-400 px-5 py-4 font-semibold text-slate-950 transition hover:brightness-95">Buscar disponibilidad</button>
+          <button id="availabilityBtn" class="mt-2 rounded-2xl bg-cyan-400 px-5 py-4 font-semibold text-slate-950 transition hover:brightness-95">Buscar disponibilidad</button>
           <div class="pt-2 text-center text-xs text-white/70">100% secure purchase</div>
         </div>
       </div>
